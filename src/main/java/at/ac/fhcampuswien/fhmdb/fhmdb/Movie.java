@@ -70,10 +70,10 @@ public class Movie {
         movie.setGenres(Arrays.asList(MUSICAL, FAMILY, ADVENTURE));
         movies.add(movie);
 
-        movie = new Movie("Nummer 5");
+        movie = new Movie("Howdy Campus");
         movie.setDescription(
-                "Teamwork can be exhausting, traumatizing and depressing. However, all above it is the most beautiful thing in the world!\n");
-        movie.setGenres(Arrays.asList(MUSICAL, FAMILY, ADVENTURE));
+                "Explore the Wild West in 'Howdy Campus: Uncovering the Origins of the FH'.\nWitness the struggles of a small group of pioneers wanting to bring education in a land without laws and rules.\nWill they be successful? This captivating documentary is a must-see for anyone who loves history, the Wild West, and the power of knowledge.\"");
+        movie.setGenres(Arrays.asList(DOCUMENTARY,WESTERN,HISTORY));
         movies.add(movie);
 
         return movies;
@@ -93,4 +93,3 @@ public class Movie {
         }
     }
 }
-
