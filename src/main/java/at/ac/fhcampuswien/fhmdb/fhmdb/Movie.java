@@ -69,6 +69,11 @@ public class Movie {
         movie.setGenres(Arrays.asList(DRAMA, ACTION, ANIMATION, SCIENCE_FICTION));
         movies.add(movie);
 
+        movie = new Movie("Howdy Campus");
+        movie.setDescription(
+                "Explore the Wild West in 'Howdy Campus: Uncovering the Origins of the FH'.\nWitness the struggles of a small group of pioneers wanting to bring education in a land without laws and rules.\nWill they be successful? This captivating documentary is a must-see for anyone who loves history, the Wild West, and the power of knowledge.\"");
+        movie.setGenres(Arrays.asList(DOCUMENTARY,WESTERN,HISTORY));
+
         movie = new Movie("Oh Campina Campina!");
         movie.setDescription(
                 "Our daily meal as students of FHCW, a mystery. We are visiting the kitchen of Campina for one day. Come and see how we discover and expose all secrets.\n" + "Recipes included!\n");
@@ -86,6 +91,11 @@ public class Movie {
                 "The first rubber duck was found nowhere less special than in David Brek's backpack on his way to a heist. He, most feared leader, and his accomplices\n" + "were the most-wanted criminals in whole Western City. Since that moment, even more and more ducks appeared in their backpacks. No matter how\n" + "much they observed their backpacks, the duck drama didn´t end. If they don´t stop the duck avalanche in time they will be found. The time is ticking.\n");
         movie.setGenres(Arrays.asList(MYSTERY, WESTERN, FAMILY, COMEDY, ADVENTURE));
         movies.add(movie);
+
+        movie = new Movie("Howdy Campus");
+        movie.setDescription(
+                "Explore the Wild West in 'Howdy Campus: Uncovering the Origins of the FH'.\nWitness the struggles of a small group of pioneers wanting to bring education in a land without laws and rules.\nWill they be successful? This captivating documentary is a must-see for anyone who loves history, the Wild West, and the power of knowledge.\"");
+        movie.setGenres(Arrays.asList(DOCUMENTARY,WESTERN,HISTORY));
 
         movie = new Movie("Finishing the race");
         movie.setDescription(

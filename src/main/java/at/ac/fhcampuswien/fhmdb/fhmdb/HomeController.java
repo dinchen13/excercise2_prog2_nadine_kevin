@@ -18,7 +18,6 @@ public class HomeController implements Initializable {
     private ComboBox<Genre> genreBox;
     @FXML
     private ComboBox<String> sortBox;
-
     private List<Movie> movies;
 
     @Override
@@ -30,7 +29,7 @@ public class HomeController implements Initializable {
     }
 
     public void OnActionFilterMovies() {
-        movies = Movie.filterAfterGenre(genreBox.getValue(),movies);
+        movies = Movie.filterAfterGenre(genreBox.getValue());
         loadingMovies(movies);
     }
 
