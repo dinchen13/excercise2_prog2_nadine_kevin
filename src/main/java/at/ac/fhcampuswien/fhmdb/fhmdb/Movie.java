@@ -71,6 +71,12 @@ public class Movie {
         movie.setGenres(Arrays.asList(MUSICAL, FAMILY, ADVENTURE));
         movies.add(movie);
 
+        movie = new Movie("Nummer 5");
+        movie.setDescription(
+                "Teamwork can be exhausting, traumatizing and depressing. However, all above it is the most beautiful thing in the world!\n");
+        movie.setGenres(Arrays.asList(MUSICAL, FAMILY, ADVENTURE));
+        movies.add(movie);
+
         return movies;
     }
 
@@ -84,3 +90,4 @@ public class Movie {
         return filteredMovies;
     }
 }
+
