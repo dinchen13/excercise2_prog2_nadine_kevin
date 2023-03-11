@@ -30,6 +30,7 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -59,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>at.ac.fhcampuswien.fhmdb.fhmdb/at.ac.fhcampuswien.fhmdb.fhmdb.Home
+                            <mainClass>at.ac.fhcampuswien.fhmdb.fhmdb/at.ac.fhcampuswien.fhmdb.Home
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

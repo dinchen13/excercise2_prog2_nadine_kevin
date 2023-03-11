@@ -1,4 +1,4 @@
-package at.ac.fhcampuswien.fhmdb.fhmdb;
+package at.ac.fhcampuswien.fhmdb;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
