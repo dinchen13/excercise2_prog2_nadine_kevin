@@ -76,6 +76,7 @@ public class Movie {
         movie.setGenres(Arrays.asList(DOCUMENTARY,WESTERN,HISTORY));
         movies.add(movie);
 
+
         return movies;
     }
 
