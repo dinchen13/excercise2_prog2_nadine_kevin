@@ -1,4 +1,4 @@
-package at.ac.fhcampuswien.fhmdb.fhmdb;
+package at.ac.fhcampuswien.fhmdb;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +15,7 @@ public class Home extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("home.fxml")));
         stage.setTitle("MovieCampus");
         stage.setScene(new Scene(root,1215,790));
+        stage.setResizable(false);
         stage.setMaximized(true);
         stage.show();
     }

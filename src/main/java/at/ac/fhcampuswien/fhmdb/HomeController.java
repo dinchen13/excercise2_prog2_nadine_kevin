@@ -1,4 +1,4 @@
-package at.ac.fhcampuswien.fhmdb.fhmdb;
+package at.ac.fhcampuswien.fhmdb;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -58,14 +58,3 @@ public class HomeController implements Initializable {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
