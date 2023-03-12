@@ -7,8 +7,8 @@ import java.util.List;
 public class Movie {
     private String title;
     private String description;
-    private List<Genre> genres;
-    private static List<Movie> movies = new ArrayList<>();
+    private List<Genre> genres = new ArrayList<>();
+
 
     public Movie(String title) {
         this.title = title;
@@ -19,6 +19,7 @@ public class Movie {
     public void setDescription(String description) {
         this.description = description;
     }
+    public void addGenre(Genre genre) { this.genres.add(genre); }
     public void setGenres(List<Genre> genres) {
         this.genres = genres;
     }
@@ -34,20 +35,10 @@ public class Movie {
     public String getGenresInStringFormat() {
         return genres.toString();
     }
-    public static Movie getMovieByTitle(String title){
-        for (Movie movie : movies) {
-            if (movie.getTitle().equals(title)) {
-                return movie;
-            }
-        }
-        return null;
 
-    }
-    public static List<Movie> getMovies(){
-        return movies;
-    }
 
     public static List<Movie> initializeMovies() {
+        List<Movie> movies = new ArrayList<>();
 
         Movie movie = new Movie("Campus Couple Love Story");
         movie.setDescription(
@@ -109,20 +100,6 @@ public class Movie {
 
 
         return movies;
-    }
-
-    public static List<Movie> filterAfterGenre(Genre genre) {
-        if (genre == Genre.ALL) {
-            return movies;
-        } else {
-            List<Movie> filteredMovies = new ArrayList<>();
-            for (Movie movie : movies) {
-                if (movie.getGenres().contains(genre)) {
-                    filteredMovies.add(movie);
-                }
-            }
-            return filteredMovies;
-        }
     }
 
 }
