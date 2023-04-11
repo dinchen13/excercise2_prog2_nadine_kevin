@@ -10,6 +10,10 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import static java.lang.System.out;
 
 public class HomeController implements Initializable {
     @FXML
@@ -29,7 +33,7 @@ public class HomeController implements Initializable {
     String query = null;
     String genre = null;
     String year = null;
-    String rating =null;
+    String rating = null;
 
 
     @Override
@@ -46,31 +50,33 @@ public class HomeController implements Initializable {
         if (searchField.getText() != null) {
             query = searchField.getText();
         }
-        if (genreBox.getValue() != null){
+        if (genreBox.getValue() != null) {
             genre = genreBox.getValue().toString();
         }
-        if(yearBox.getText()!=null){
+        if (yearBox.getText() != null) {
             year = yearBox.getText().toString();
         }
-        if(ratingBox.getValue()!=null) {
+        if (ratingBox.getValue() != null) {
             rating = ratingBox.getValue().toString();
         }
-        if(genreBox.getValue()==Genre.ALL){
-            genre=null;
+        if (genreBox.getValue() == Genre.ALL) {
+            genre = null;
         }
-        if(yearBox.getText()=="no filter"){
-            year=null;
+        if (yearBox.getText() == "no filter") {
+            year = null;
         }
-        if(ratingBox.getValue()=="no filter"){
-            rating=null;
+        if (ratingBox.getValue() == "no filter") {
+            rating = null;
         }
-        System.out.println(query+genre+year+rating);
-        loadingMovies( MovieAPI.getMovies(query, genre, year, rating));
+        System.out.println(query + genre + year + rating);
+        loadingMovies(MovieAPI.getMovies(query, genre, year, rating));
     }
+
     public void OnActiveSortMovies() {
         selectedMovies = sortMovies(sortBox.getValue(), selectedMovies);
         loadingMovies(selectedMovies);
     }
+
     public static List<Movie> sortMovies(String sortAlgo, List<Movie> movies) {
         if (sortAlgo.equals("A-Z")) {
             movies.sort(Comparator.comparing(Movie::getTitle));
@@ -80,6 +86,38 @@ public class HomeController implements Initializable {
         return movies;
     }
 
+    public static String getMostPopularActor(List<Movie> movies) {  //gibt jene Person zurück, die am öftesten im mainCast der übergebenen Filme vorkommt.
+
+        return movies.stream()
+                .flatMap(movie -> movie.getMainCast().stream())
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                .entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse(null);
+    }
+
+    public static int getLongestMovieTitle(List<Movie> movies) {   //filtert auf den längsten Filmtitel der übergebenen Filme und gibt die Anzahl der Buchstaben des Titels zurück
+        return movies.stream()
+                .map(Movie::getTitle)
+                .max(Comparator.comparing(String::length))
+                .orElse("").length();
+
+    }
+
+    public static long countMoviesFrom(List<Movie> movies, String director) { //gibt die Anzahl der Filme eines bestimmten Regisseurs zurück.
+        return movies.stream()
+                .flatMap(movie -> movie.getDirectors().stream())
+                .filter(director::equals)
+                .count();
+    }
+
+    public static List<Movie> getMoviesBetweenYears(List<Movie> movies, int startYear, int endYear) { //gibt jene Filme zurück, die zwischen zwei gegebenen Jahren veröffentlicht wurden.
+        return movies.stream()
+                .filter(movie -> movie.getReleaseYear() > startYear && movie.getReleaseYear() < endYear)
+                .toList();
+
+    }
 
     // ____________________________ LOADING SCREEN ________________________________//
     public void loadingMovies(List<Movie> movies) {
@@ -96,5 +134,15 @@ public class HomeController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        //Just to see if the above implemented Methods do what they should
+        out.println("most Popular Actors = " + getMostPopularActor(movies));
+        out.println("longest title character count = " + getLongestMovieTitle(movies));
+        //mit random Paramentern
+        out.println("count Movies from Director1 = " + countMoviesFrom(movies, "Frank Darabont"));
+        out.println("Movies zwischen 1972 und 1980 = " + getMoviesBetweenYears(movies, 1972, 1980));
+
     }
+
+
 }
