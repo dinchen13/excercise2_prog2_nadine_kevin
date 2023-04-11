@@ -14,10 +14,12 @@ public class MovieController {
     @FXML
     private Label title;
     public void setData(Movie movie) {
+
         title.setText(movie.getTitle());
         description.setText(movie.getDescription());
-        genres.setText(movie.getGenresInStringFormat());
+        genres.setText(movie.getGenres().toString());
         releaseYear.setText("Release Year: " + String.valueOf(movie.getReleaseYear()));
         rating.setText("Rating: " + String.valueOf(movie.getRating()));
+
     }
 }

@@ -44,7 +44,7 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ComboBox fx:id="genreBox" nodeOrientation="RIGHT_TO_LEFT" onAction="#OnActionFilterMovies" prefHeight="34.0" prefWidth="120.0" promptText="GENRE">
+                  <ComboBox fx:id="genreBox" nodeOrientation="RIGHT_TO_LEFT" onAction="#onActionFilterMovies" prefHeight="34.0" prefWidth="120.0" promptText="GENRE">
                      <padding>
                         <Insets top="4.0" />
                      </padding>
@@ -62,7 +62,7 @@
             </HBox>
             <HBox prefHeight="91.0" prefWidth="220.0">
                <children>
-                  <ComboBox fx:id="ratingBox" nodeOrientation="RIGHT_TO_LEFT" onAction="#OnActionFilterMoviesAfterRating" prefHeight="34.0" prefWidth="120.0" promptText="RATING">
+                  <ComboBox fx:id="ratingBox" nodeOrientation="RIGHT_TO_LEFT" onAction="#onActionFilterMovies" prefHeight="34.0" prefWidth="120.0" promptText="RATING">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -77,7 +77,14 @@
             </HBox>
             <HBox prefHeight="91.0" prefWidth="220.0">
                <children>
-                  <ComboBox fx:id="yearBox" nodeOrientation="RIGHT_TO_LEFT" onAction="#OnActionFilterMoviesAfterYear" prefHeight="34.0" prefWidth="120.0" promptText="RELEASE YEAR" />
+                  <TextField fx:id="yearBox" onAction="#onActionFilterMovies" prefHeight="36.0" prefWidth="125.0" promptText="SEARCH MOVIE ">
+                     <opaqueInsets>
+                        <Insets top="60.0" />
+                     </opaqueInsets>
+                     <font>
+                        <Font name="Lucida Sans Unicode" size="12.0" />
+                     </font>
+                  </TextField>
                </children>
                <opaqueInsets>
                   <Insets />
@@ -107,7 +114,7 @@
             </HBox>
             <HBox maxHeight="-Infinity" prefHeight="70.0" prefWidth="338.0">
                <children>
-                  <TextField fx:id="searchField" onAction="#OnActiveSearchMovies" prefHeight="36.0" prefWidth="236.0" promptText="SEARCH MOVIE ">
+                  <TextField fx:id="searchField" onAction="#onActionFilterMovies" prefHeight="36.0" prefWidth="236.0" promptText="SEARCH MOVIE ">
                      <opaqueInsets>
                         <Insets top="60.0" />
                      </opaqueInsets>
