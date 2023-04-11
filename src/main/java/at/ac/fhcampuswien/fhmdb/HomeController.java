@@ -69,7 +69,11 @@ public class HomeController implements Initializable {
             rating = null;
         }
         System.out.println(query + genre + year + rating);
-        loadingMovies(MovieAPI.getMovies(query, genre, year, rating));
+        selectedMovies=MovieAPI.getMovies(query, genre, year, rating);
+        if(sortBox.getValue()!=null){
+            selectedMovies = sortMovies(sortBox.getValue(), selectedMovies);
+        }
+        loadingMovies(selectedMovies);
     }
 
     public void OnActiveSortMovies() {
@@ -96,7 +100,6 @@ public class HomeController implements Initializable {
                 .map(Map.Entry::getKey)
                 .orElse(null);
     }
-
     public static int getLongestMovieTitle(List<Movie> movies) {   //filtert auf den längsten Filmtitel der übergebenen Filme und gibt die Anzahl der Buchstaben des Titels zurück
         return movies.stream()
                 .map(Movie::getTitle)
@@ -104,19 +107,16 @@ public class HomeController implements Initializable {
                 .orElse("").length();
 
     }
-
     public static long countMoviesFrom(List<Movie> movies, String director) { //gibt die Anzahl der Filme eines bestimmten Regisseurs zurück.
         return movies.stream()
                 .flatMap(movie -> movie.getDirectors().stream())
                 .filter(director::equals)
                 .count();
     }
-
     public static List<Movie> getMoviesBetweenYears(List<Movie> movies, int startYear, int endYear) { //gibt jene Filme zurück, die zwischen zwei gegebenen Jahren veröffentlicht wurden.
         return movies.stream()
                 .filter(movie -> movie.getReleaseYear() > startYear && movie.getReleaseYear() < endYear)
                 .toList();
-
     }
 
     // ____________________________ LOADING SCREEN ________________________________//
