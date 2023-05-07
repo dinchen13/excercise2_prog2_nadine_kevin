@@ -1,11 +1,20 @@
 package at.ac.fhcampuswien.fhmdb;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Menu;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
+import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +37,12 @@ public class HomeController implements Initializable {
     private ComboBox<String> sortBox;
     @FXML
     private TextField searchField;
+    @FXML
+    private AnchorPane slider;
+    @FXML
+    ImageView menu;
+    @FXML
+    ImageView menuclose;
     private List<Movie> allMovies = new ArrayList<>(Movie.initializeMoviesNew());
     private List<Movie> selectedMovies = allMovies;
     String query = null;
@@ -35,9 +50,43 @@ public class HomeController implements Initializable {
     String year = null;
     String rating = null;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        slider.setTranslateX(-176);
+        menu.setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+
+            slide.setToX(0);
+            slide.play();
+
+            slider.setTranslateX(-176);
+            slide.setOnFinished((ActionEvent e) -> {
+                menu.setVisible(false);
+                menuclose.setVisible(true);
+            });
+        });
+
+        menuclose.setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+
+            slide.setToX(-176);
+            slide.play();
+
+            slider.setTranslateX(0);
+
+            slide.setOnFinished((ActionEvent e) ->{
+                menu.setVisible(true);
+                menuclose.setVisible(false);
+            });
+
+
+        });
+
         genreBox.getItems().addAll(Genre.values());
         sortBox.getItems().addAll("A-Z", "Z-A");
         //yearBox.getItems().addAll("no filter", 2020, 2010, 2000, 1990, 1980, 1970, 1960, 1950, 1940);
@@ -69,8 +118,8 @@ public class HomeController implements Initializable {
             rating = null;
         }
         System.out.println(query + genre + year + rating);
-        selectedMovies=MovieAPI.getMovies(query, genre, year, rating);
-        if(sortBox.getValue()!=null){
+        selectedMovies = MovieAPI.getMovies(query, genre, year, rating);
+        if (sortBox.getValue() != null) {
             selectedMovies = sortMovies(sortBox.getValue(), selectedMovies);
         }
         loadingMovies(selectedMovies);
@@ -132,17 +181,16 @@ public class HomeController implements Initializable {
                 home.getChildren().add(movieSpace);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-
-        //Just to see if the above implemented Methods do what they should
-        out.println("most Popular Actors = " + getMostPopularActor(movies));
-        out.println("longest title character count = " + getLongestMovieTitle(movies));
-        //mit random Paramentern
-        out.println("count Movies from Director1 = " + countMoviesFrom(movies, "Frank Darabont"));
-        out.println("Movies zwischen 1972 und 1980 = " + getMoviesBetweenYears(movies, 1972, 1980));
-
     }
 
-
+    /*
+            //Just to see if the above implemented Methods do what they should
+            out.println("most Popular Actors = " + getMostPopularActor(movies));
+            out.println("longest title character count = " + getLongestMovieTitle(movies));
+            //mit random Paramentern
+            out.println("count Movies from Director1 = " + countMoviesFrom(movies, "Frank Darabont"));
+            out.println("Movies zwischen 1972 und 1980 = " + getMoviesBetweenYears(movies, 1972, 1980));
+    */
 }
