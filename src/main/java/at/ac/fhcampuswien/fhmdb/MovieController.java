@@ -15,14 +15,17 @@ public class MovieController {
     @FXML
     private Label title;
     @FXML
-    private Button watchlistbtn;
+    private Button watchlistButton;
     public void setData(Movie movie) {
-
         title.setText(movie.getTitle());
         description.setText(movie.getDescription());
         genres.setText(movie.getGenres().toString());
         releaseYear.setText("Release Year: " + String.valueOf(movie.getReleaseYear()));
         rating.setText("Rating: " + String.valueOf(movie.getRating()));
-
+        if(HomeController.currentState==State.HOME){
+            watchlistButton.setText("Watchlist");
+        } else {
+            watchlistButton.setText("remove");
+        }
     }
 }

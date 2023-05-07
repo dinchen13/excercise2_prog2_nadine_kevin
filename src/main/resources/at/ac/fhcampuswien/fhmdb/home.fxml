@@ -37,7 +37,7 @@
             <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="86.0" prefWidth="14.0" />
             <HBox prefHeight="91.0" prefWidth="350.0">
                <children>
-                  <ImageView fx:id="menu" fitHeight="40.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="menu" fitHeight="40.0" fitWidth="49.0" onMouseClicked="#onMenuClicked" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/Menu_icon_icon-icons.com_71858.png" />
                      </image>
@@ -149,20 +149,29 @@
          <children>
             <VBox prefHeight="698.0" prefWidth="269.0" style="-fx-background-color: WHite;">
                <children>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="400.0" text="Home">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onActionChangeToHome" prefHeight="38.0" prefWidth="400.0" text="Home">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="400.0" text="Watchlist">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#onActionChangeToWatchlist" prefHeight="38.0" prefWidth="400.0" text="Watchlist">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
                   </Button>
                   <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="400.0" text="About">
                      <font>
                         <Font size="14.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="7.0" />
+                     </VBox.margin>
                   </Button>
                </children>
             </VBox>

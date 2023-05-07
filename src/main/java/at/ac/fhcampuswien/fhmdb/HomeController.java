@@ -41,35 +41,20 @@ public class HomeController implements Initializable {
     private AnchorPane slider;
     @FXML
     ImageView menu;
-    private List<Movie> allMovies = new ArrayList<>(Movie.initializeMoviesNew());
+    private final List<Movie> allMovies = new ArrayList<>(Movie.initializeMoviesNew());
+    private final List<Movie> watchlistMovies = new ArrayList<>(Movie.initializeMoviesTest());
     private List<Movie> selectedMovies = allMovies;
     String query = null;
     String genre = null;
     String year = null;
     String rating = null;
+    public static State currentState = State.HOME;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         slider.setTranslateX(-300);
-        menu.setOnMouseClicked(event -> {
-            if(slider.getTranslateX()==-300) {
-                TranslateTransition slide = new TranslateTransition();
-                slide.setDuration(Duration.seconds(0.4));
-                slide.setNode(slider);
-                slide.setToX(0);
-                slide.play();
-            }
-            else{
-                TranslateTransition slide = new TranslateTransition();
-                slide.setDuration(Duration.seconds(0.4));
-                slide.setNode(slider);
-                slide.setToX(-300);
-                slide.play();
-            }
-        });
-
-
         genreBox.getItems().addAll(Genre.values());
         sortBox.getItems().addAll("A-Z", "Z-A");
         //yearBox.getItems().addAll("no filter", 2020, 2010, 2000, 1990, 1980, 1970, 1960, 1950, 1940);
@@ -78,6 +63,35 @@ public class HomeController implements Initializable {
     }
 
     // __________________ Node active actions _______________________//
+    public void onActionChangeToWatchlist(){
+        currentState=State.WATCHLIST;
+        selectedMovies=watchlistMovies;
+        onMenuClicked();
+        loadingMovies(selectedMovies);
+    }
+    public void onActionChangeToHome(){
+        currentState=State.HOME;
+        selectedMovies=allMovies;
+        onMenuClicked();
+        loadingMovies(selectedMovies);
+    }
+    public void onMenuClicked(){
+        if(slider.getTranslateX()==-300) {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+            slide.setToX(0);
+            slide.play();
+        }
+        else{
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.4));
+            slide.setNode(slider);
+            slide.setToX(-300);
+            slide.play();
+        }
+    }
+
     public void onActionFilterMovies() {
         if (searchField.getText() != null) {
             query = searchField.getText();

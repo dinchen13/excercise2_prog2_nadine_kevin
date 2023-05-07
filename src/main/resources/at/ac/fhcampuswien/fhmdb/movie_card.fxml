@@ -9,17 +9,29 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="1210.0" style="-fx-background-color: #36353D;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.ac.fhcampuswien.fhmdb.MovieController">
    <children>
-      <Label fx:id="title" prefHeight="96.0" prefWidth="1178.0" text="Campus Couples Love Story" textFill="#c500cc">
-         <font>
-            <Font name="Eras Demi ITC" size="40.0" />
-         </font>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label fx:id="title" prefHeight="96.0" prefWidth="1178.0" text="Campus Couples Love Story" textFill="#c500cc">
+               <font>
+                  <Font name="Eras Demi ITC" size="40.0" />
+               </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </Label>
+            <Button fx:id="watchlistButton" mnemonicParsing="false" prefHeight="44.0" prefWidth="363.0" style="-fx-background-radius: 100;" text="Watchlist">
+               <HBox.margin>
+                  <Insets right="50.0" top="28.0" />
+               </HBox.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Label fx:id="description" prefHeight="56.0" prefWidth="1160.0" text="2 students, 1 love. Between lectures, exercises and test there is something exciting and new. Our two main character experience the beauty of love. But not &#10;only there are struggles in their new found love, but also they have to face the challenges of studying ...dddddddddddddddddddddddddddddddddddddd&#10;ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" textFill="WHITE" wrapText="true">
          <padding>
-            <Insets left="25.0" />
-         </padding>
-      </Label>
-      <Label fx:id="description" prefHeight="68.0" prefWidth="1179.0" text="2 students, 1 love. Between lectures, exercises and test there is something exciting and new. Our two main character experience the beauty of love. But not &#10;only there are struggles in their new found love, but also they have to face the challenges of studying ...dddddddddddddddddddddddddddddddddddddd&#10;ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" textFill="WHITE" wrapText="true">
-         <padding>
-            <Insets left="25.0" />
+            <Insets left="30.0" />
          </padding>
          <font>
             <Font size="17.0" />
@@ -32,10 +44,9 @@
                   <Font name="Calibri Light" size="25.0" />
                </font>
                <padding>
-                  <Insets left="25.0" top="15.0" />
+                  <Insets left="30.0" top="15.0" />
                </padding>
             </Label>
-            <Button fx:id="watchlistbtn" mnemonicParsing="false" prefHeight="71.0" prefWidth="138.0" text="Add to Watchlist" />
             <Label fx:id="releaseYear" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" prefHeight="38.0" prefWidth="226.0" text="Release Year: 2022" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font size="15.0" />

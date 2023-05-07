@@ -108,4 +108,8 @@ public class Movie {
     public static List<Movie> initializeMoviesNew() {
         return MovieAPI.getMovies(null, null, null, null);
     }
+
+    public static List<Movie> initializeMoviesTest() {
+        return MovieAPI.getMovies("ni", null, null, null);
+    }
 }
