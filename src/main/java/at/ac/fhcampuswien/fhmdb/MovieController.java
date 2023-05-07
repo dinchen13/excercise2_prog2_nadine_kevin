@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien.fhmdb;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class MovieController {
@@ -13,6 +14,8 @@ public class MovieController {
     private Label rating;
     @FXML
     private Label title;
+    @FXML
+    private Button watchlistbtn;
     public void setData(Movie movie) {
 
         title.setText(movie.getTitle());

@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.ac.fhcampuswien.fhmdb.HomeController">
+<AnchorPane prefHeight="790.0" prefWidth="1215.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.ac.fhcampuswien.fhmdb.HomeController">
    <children>
       <HBox prefHeight="91.0" prefWidth="1215.0" style="-fx-background-color: LIGHTGREY;">
          <children>
@@ -37,7 +37,12 @@
             <Separator maxHeight="-Infinity" orientation="VERTICAL" prefHeight="86.0" prefWidth="14.0" />
             <HBox prefHeight="91.0" prefWidth="280.0">
                <children>
-                  <ImageView fx:id="menuclose" fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="menu" fitHeight="40.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Menu_icon_icon-icons.com_71858.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="43.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/Bild_2023-03-06_163437466-removebg-preview.png" />
                      </image>
@@ -96,7 +101,7 @@
             </HBox>
             <HBox prefHeight="91.0" prefWidth="228.0">
                <children>
-                  <ImageView fx:id="menu" fitHeight="28.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="28.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/sorticon.png" />
                      </image>
@@ -137,13 +142,18 @@
       </HBox>
       <ScrollPane hbarPolicy="NEVER" layoutY="92.0" prefHeight="650.0" prefWidth="1216.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="92.0">
          <content>
-            <VBox fx:id="home" prefHeight="850.0" prefWidth="1214.0" spacing="20.0" />
+            <VBox fx:id="home" prefHeight="700.0" prefWidth="1214.0" spacing="20.0" />
          </content>
       </ScrollPane>
       <AnchorPane fx:id="slider" layoutY="93.0">
          <children>
-            <VBox prefHeight="634.0" prefWidth="276.0">
+            <VBox prefHeight="698.0" prefWidth="269.0" style="-fx-background-color: WHite;">
                <children>
+                  <ImageView fx:id="menuclose" fitHeight="41.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/png-transparent-x-mark-computer-icons-wrongcross-angle-symmetry-monochrome.png" />
+                     </image>
+                  </ImageView>
                   <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="38.0" prefWidth="400.0" text="Home">
                      <font>
                         <Font size="14.0" />
