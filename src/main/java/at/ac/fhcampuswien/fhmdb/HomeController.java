@@ -41,8 +41,6 @@ public class HomeController implements Initializable {
     private AnchorPane slider;
     @FXML
     ImageView menu;
-    @FXML
-    ImageView menuclose;
     private List<Movie> allMovies = new ArrayList<>(Movie.initializeMoviesNew());
     private List<Movie> selectedMovies = allMovies;
     String query = null;
@@ -55,35 +53,22 @@ public class HomeController implements Initializable {
 
         slider.setTranslateX(-300);
         menu.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
-
-            slide.setToX(0);
-            slide.play();
-
-            slider.setTranslateX(-300);
-            slide.setOnFinished((ActionEvent e) -> {
-                //menu.setVisible(false);
-            });
+            if(slider.getTranslateX()==-300) {
+                TranslateTransition slide = new TranslateTransition();
+                slide.setDuration(Duration.seconds(0.4));
+                slide.setNode(slider);
+                slide.setToX(0);
+                slide.play();
+            }
+            else{
+                TranslateTransition slide = new TranslateTransition();
+                slide.setDuration(Duration.seconds(0.4));
+                slide.setNode(slider);
+                slide.setToX(-300);
+                slide.play();
+            }
         });
 
-        menuclose.setOnMouseClicked(event -> {
-            TranslateTransition slide = new TranslateTransition();
-            slide.setDuration(Duration.seconds(0.4));
-            slide.setNode(slider);
-
-            slide.setToX(-300);
-            slide.play();
-
-            slider.setTranslateX(0);
-
-            slide.setOnFinished((ActionEvent e) ->{
-               // menu.setVisible(true);
-            });
-
-
-        });
 
         genreBox.getItems().addAll(Genre.values());
         sortBox.getItems().addAll("A-Z", "Z-A");
