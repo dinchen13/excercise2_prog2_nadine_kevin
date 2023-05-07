@@ -16,14 +16,14 @@ public class Home extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("home.fxml"));
         Scene scene = new Scene(fxmlLoader.load(),1215,790);
-       // scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         stage.setTitle("MovieCampus");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
 
         try {
-            Databasemanager dbManager = Databasemanager.getDatabasemanager();
+            Database dbManager = Database.getDatabase();
             dbManager.testDB();
         }catch (SQLException e){
             e.printStackTrace();
